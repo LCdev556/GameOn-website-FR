@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="./asset/css/modal.css" />
+    <link rel="stylesheet" href="./assets/styles/modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="./asset/image/Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="./assets/images/Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
       
@@ -45,7 +45,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./asset/image/bg_img.jpg" alt="img" />
+          <img src="./assets/images/bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
@@ -60,7 +60,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du Prénom" data-error-visible="false">
@@ -215,7 +214,6 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="./asset/javascript/modal/modal.js"></script>
-    <script src="./asset/javascript/validator/form-event-subscribe.js"></script>
+    <script type="module" src="./assets/js/index.js"></script> 
   </body>
 </html>

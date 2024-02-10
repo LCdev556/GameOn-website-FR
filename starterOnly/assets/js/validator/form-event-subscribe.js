@@ -6,7 +6,7 @@ const birthdateTag = document.getElementById('birthdate');
 const quantityTag = document.getElementById('quantity');
 const locationInputList = document.getElementsByName('location');
 const conditionTag = document.getElementById('checkbox1');
-const testLocation = document.getElementById('location1')
+const testLocation = document.getElementById('location1');
 
 
 //prevent default submit event 
@@ -23,13 +23,29 @@ function isValidFirstname(firstnameValue) {
   return false;
 }
 
-// Nom de famille => lastname
-function isValidLastname(lastnameValue) {
-  if (lastnameValue >= 2) {
-    return true
+/**export function validateFirstnameInput() {
+  const firstNameContainer = firstnameTag.parentNode;
+
+  if (isValidFirstname(firstnameTag.value.length)) {
+    firstNameContainer.setAttribute('data-error-visible', 'false');
+
+    return true;
   }
 
-  return false
+  firstNameContainer.setAttribute('data-error-visible', 'true');
+}
+ */
+
+
+function isValidLastname(lastnameValue) {
+  const lastNameContainer = lastnameTag.parentNode;
+
+  if (lastnameValue >= 2) {
+    lastNameContainer.setAttribute('data-error-visible', 'false');
+    return true;
+  }
+
+  lastNameContainer.setAttribute('data-error-visible', 'true');
 }
 
 function isValidEmail(emailValue) {
@@ -44,22 +60,15 @@ function isValidQantity(quantityValue) {
     return (Number.isInteger(parseInt (quantityValue)));
 }
 
-var locationVerificationResult = 0;
-function locationVerification(){
-for (let i = 0; i < locationInputList.length; i++) {
-  if (locationInputList[i].checked) {
-    locationVerificationResult ++;
-    
-  
-  }if (locationVerificationResult == 0){
-    console.log('false')
+function locationVerification()
+{
+    for (let i = 0; i < locationInputList.length; i++) {
+      if (locationInputList[i].checked) {
+        return true;
+      }
+    }
+
     return false;
-  }
-  
-  
-  console.log('true')
-  return true;
-}
 }
 
 
@@ -76,13 +85,11 @@ firstnameTag.addEventListener("focusout", (event) => {
   }
 });
 
+
 lastnameTag.addEventListener("focusout", (event) =>{
-    const lastNameContainer = lastnameTag.parentNode;
-  if (isValidLastname(lastnameTag.value.length)) {
-    lastNameContainer.setAttribute('data-error-visible', 'false');
-  } else {
-    lastNameContainer.setAttribute('data-error-visible', 'true');
-  }
+    
+  isValidLastname(lastnameTag.value.length)
+    
 });
 
 emailTag.addEventListener("focusout", (event) => {
@@ -115,7 +122,7 @@ quantityTag.addEventListener("focusout", (event) => {
 
 
 conditionTag.addEventListener("change", (event) => {
-    const conditionContainer = conditionTag.parentNode;
+  const conditionContainer = conditionTag.parentNode;
   if (conditionTag.checked) {
     conditionContainer.setAttribute('data-error-visible', 'false');
   } else {
@@ -157,11 +164,10 @@ form.addEventListener("submit", (event) => {
     conditionContainer.setAttribute('data-error-visible', 'true');
   }
   const locationContainer = testLocation.parentNode;
-  if (locationVerification() == false) {
+  if (!locationVerification()) {
     locationContainer.setAttribute('data-error-visible', 'true');
   }
-
-  console.log(locationVerificationResult)
+  
   /** 
   if(firstnameVerification(firstnameTag.value.length) + surnameVerification(surnameTag.value.length) 
   + emailVerification(emailTag.value) + birthdateVerification(birthdateTag.value) 
