@@ -194,7 +194,10 @@ label {
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
+  opacity: 1;
 }
+
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
@@ -207,6 +210,7 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+  opacity: 1;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -225,6 +229,9 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+}
+.formdata {
+  display: none;
 }
 /*
 input[data-error]::after {
@@ -404,6 +411,20 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+
+.validation-text {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 35px;
+  margin-top: 80%;
+  margin-bottom: -80%;
+  font-weight: 100;
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;

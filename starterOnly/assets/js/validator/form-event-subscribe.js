@@ -1,10 +1,14 @@
 //DOM Elements form
 
-import { firstnameTag, lastnameTag, emailTag, birthdateTag, quantityTag, locationInputList, conditionTag, LocationTag } from './validator/validator-dom-elements';
-
-
-//prevent default submit event 
-const form = document.querySelector('form') 
+const firstnameTag = document.getElementById('first');
+const lastnameTag = document.getElementById('last');
+const emailTag = document.getElementById('email');
+const birthdateTag = document.getElementById('birthdate');
+const quantityTag = document.getElementById('quantity');
+const locationInputList = document.getElementsByName('location');
+const conditionTag = document.getElementById('checkbox1');
+const locationTag = document.getElementById('location1');
+const form = document.querySelector('form')
 
 
 //verification valeur balise--------------------------------------------------------------------------------------
@@ -40,6 +44,7 @@ export function isValidEmail(emailValue) {
   const emailContainer = emailTag.parentNode;
   if ((new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue)) {
     emailContainer.setAttribute('data-error-visible', 'false');
+    return true;
   };
   emailContainer.setAttribute('data-error-visible', 'true');
 }
@@ -48,6 +53,7 @@ export function isValidBirthdate(birthdateValue) {
   const birthdateContainer = birthdateTag.parentNode;
   if ((new RegExp("\\d{4}\-\\d{2}\-\\d{2}")).test(birthdateValue)){
     birthdateContainer.setAttribute('data-error-visible', 'false');
+    return true;
   }
   birthdateContainer.setAttribute('data-error-visible', 'true');
 }
@@ -57,22 +63,24 @@ export function isValidQantity(quantityValue)
   const quantityContainer = quantityTag.parentNode;
     if (Number.isInteger(parseInt (quantityValue))) {
       quantityContainer.setAttribute('data-error-visible', 'false');
+      return true;
     }
     quantityContainer.setAttribute('data-error-visible', 'true');
 }
 
-function isValideCondition()
+export function isValideCondition()
 {
   const conditionContainer = conditionTag.parentNode;
   if (conditionTag.checked) {
     conditionContainer.setAttribute('data-error-visible', 'false');
+    return true;
   } else {
     conditionContainer.setAttribute('data-error-visible', 'true');
   }
 
 }
 
-function isValideLocation()
+export function isValideLocation()
 {
   const locationContainer = LocationTag.parentNode;
     for (let i = 0; i < locationInputList.length; i++) {
@@ -90,6 +98,7 @@ function isValideLocation()
 
 //validation contenue balise---------------------------------------------------------------------------------------
 
+/** 
 firstnameTag.addEventListener("focusout", (event) => {
   const firstNameContainer = firstnameTag.parentNode;
   if (isValidFirstname(firstnameTag.value.length)) {
@@ -157,51 +166,5 @@ export function displayErrorMessage(baliseReturn, baliseName) {
   console.log('false')
   }
 }
-
-
-/** 
-//validation formulaire-----------------------------------------------------------------------------------
-form.addEventListener("submit", (event) => {
-  // On empêche le comportement par défaut
-  event.preventDefault();
-  //on vérifie a nouveau chaque champ du formulaire 
-  const firstNameContainer = firstnameTag.parentNode;
-  if (!isValidFirstname(firstnameTag.value.length)) {
-    firstNameContainer.setAttribute('data-error-visible', 'true');
-  }
-  const lastNameContainer = lastnameTag.parentNode;
-  if (!isValidLastname(lastnameTag.value.length)) {
-    lastNameContainer.setAttribute('data-error-visible', 'true');
-  }
-  const emailContainer = emailTag.parentNode;
-  if (!isValidEmail(emailTag.value)) {
-    emailContainer.setAttribute('data-error-visible', 'true');
-  }
-  const birthdateContainer = birthdateTag.parentNode;
-  if (!isValidBirthdate(birthdateTag.value)) {
-    birthdateContainer.setAttribute('data-error-visible', 'true');
-  }
-  const quantityContainer = quantityTag.parentNode;
-  if (!isValidQantity(quantityTag.value)) {
-    quantityContainer.setAttribute('data-error-visible', 'true');
-  }
-  const conditionContainer = conditionTag.parentNode;
-  if (!conditionTag.checked) {
-    conditionContainer.setAttribute('data-error-visible', 'true');
-  }
-  const locationContainer = testLocation.parentNode;
-  if (!locationVerification()) {
-    locationContainer.setAttribute('data-error-visible', 'true');
-  }
-  
-  
-  if(firstnameVerification(firstnameTag.value.length) + surnameVerification(surnameTag.value.length) 
-  + emailVerification(emailTag.value) + birthdateVerification(birthdateTag.value) 
-  + quantityVerification(quantityTag.value) + tcTag.checked ) {
-
-  }
-  
-    
-});
-
 */
+

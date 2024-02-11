@@ -1,4 +1,0 @@
-export const modalbg = document.querySelector(".bground");
-export const modalBtn = document.querySelectorAll(".modal-btn");
-export const formData = document.querySelectorAll(".formData");
-export const closeBtn = document.querySelector(".close");

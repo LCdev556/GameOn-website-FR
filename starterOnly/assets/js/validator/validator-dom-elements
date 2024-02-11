@@ -1,8 +1,0 @@
-export const firstnameTag = document.getElementById('first');
-export const lastnameTag = document.getElementById('last');
-export const emailTag = document.getElementById('email');
-export const birthdateTag = document.getElementById('birthdate');
-export const quantityTag = document.getElementById('quantity');
-export const locationInputList = document.getElementsByName('location');
-export const conditionTag = document.getElementById('checkbox1');
-export const locationTag = document.getElementById('location1');
