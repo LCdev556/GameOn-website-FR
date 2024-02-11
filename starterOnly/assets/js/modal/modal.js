@@ -8,10 +8,7 @@ export function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
+import { modalbg, modalBtn, formData, closeBtn } from "./modal-dom-elements";
 
 // launch modal form
  export function launchModal() {

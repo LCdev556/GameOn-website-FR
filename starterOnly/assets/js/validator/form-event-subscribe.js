@@ -1,12 +1,6 @@
 //DOM Elements form
-const firstnameTag = document.getElementById('first');
-const lastnameTag = document.getElementById('last');
-const emailTag = document.getElementById('email');
-const birthdateTag = document.getElementById('birthdate');
-const quantityTag = document.getElementById('quantity');
-const locationInputList = document.getElementsByName('location');
-const conditionTag = document.getElementById('checkbox1');
-const testLocation = document.getElementById('location1');
+
+import { firstnameTag, lastnameTag, emailTag, birthdateTag, quantityTag, locationInputList, conditionTag, LocationTag } from './validator/validator-dom-elements';
 
 
 //prevent default submit event 
@@ -15,29 +9,22 @@ const form = document.querySelector('form')
 
 //verification valeur balise--------------------------------------------------------------------------------------
 // Proposition de nom : isValidFirstname
-function isValidFirstname(firstnameValue) {
+export function isValidFirstname(firstnameValue) {
+  const firstNameContainer = firstnameTag.parentNode;
   if (firstnameValue >= 2) {
+    firstNameContainer.setAttribute('data-error-visible', 'false');
     return true;
+    
   }
-  
+  firstNameContainer.setAttribute('data-error-visible', 'true');
   return false;
 }
 
-/**export function validateFirstnameInput() {
-  const firstNameContainer = firstnameTag.parentNode;
-
-  if (isValidFirstname(firstnameTag.value.length)) {
-    firstNameContainer.setAttribute('data-error-visible', 'false');
-
-    return true;
-  }
-
-  firstNameContainer.setAttribute('data-error-visible', 'true');
-}
- */
 
 
-function isValidLastname(lastnameValue) {
+
+
+export function isValidLastname(lastnameValue) {
   const lastNameContainer = lastnameTag.parentNode;
 
   if (lastnameValue >= 2) {
@@ -46,28 +33,55 @@ function isValidLastname(lastnameValue) {
   }
 
   lastNameContainer.setAttribute('data-error-visible', 'true');
+  return false;
 }
 
-function isValidEmail(emailValue) {
-  return (new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue);
+export function isValidEmail(emailValue) {
+  const emailContainer = emailTag.parentNode;
+  if ((new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue)) {
+    emailContainer.setAttribute('data-error-visible', 'false');
+  };
+  emailContainer.setAttribute('data-error-visible', 'true');
 }
 
-function isValidBirthdate(birthdateValue) {
-  return (new RegExp("\\d{4}\-\\d{2}\-\\d{2}")).test(birthdateValue);
+export function isValidBirthdate(birthdateValue) {
+  const birthdateContainer = birthdateTag.parentNode;
+  if ((new RegExp("\\d{4}\-\\d{2}\-\\d{2}")).test(birthdateValue)){
+    birthdateContainer.setAttribute('data-error-visible', 'false');
+  }
+  birthdateContainer.setAttribute('data-error-visible', 'true');
 }
 
-function isValidQantity(quantityValue) {
-    return (Number.isInteger(parseInt (quantityValue)));
-}
-
-function locationVerification()
+export function isValidQantity(quantityValue) 
 {
+  const quantityContainer = quantityTag.parentNode;
+    if (Number.isInteger(parseInt (quantityValue))) {
+      quantityContainer.setAttribute('data-error-visible', 'false');
+    }
+    quantityContainer.setAttribute('data-error-visible', 'true');
+}
+
+function isValideCondition()
+{
+  const conditionContainer = conditionTag.parentNode;
+  if (conditionTag.checked) {
+    conditionContainer.setAttribute('data-error-visible', 'false');
+  } else {
+    conditionContainer.setAttribute('data-error-visible', 'true');
+  }
+
+}
+
+function isValideLocation()
+{
+  const locationContainer = LocationTag.parentNode;
     for (let i = 0; i < locationInputList.length; i++) {
       if (locationInputList[i].checked) {
+        locationContainer.setAttribute('data-error-visible', 'false');
         return true;
       }
     }
-
+    locationContainer.setAttribute('data-error-visible', 'true');
     return false;
 }
 
@@ -132,8 +146,20 @@ conditionTag.addEventListener("change", (event) => {
 
 
 
+export function displayErrorMessage(baliseReturn, baliseName) {
+  if (baliseReturn == true) {
+    (baliseName).setAttribute('data-error-visible', 'false');
+    console.log('true')
+    console.log(baliseReturn)
+    return;
+  } else {
+  (baliseName).setAttribute('data-error-visible', 'false');
+  console.log('false')
+  }
+}
 
 
+/** 
 //validation formulaire-----------------------------------------------------------------------------------
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
@@ -168,12 +194,14 @@ form.addEventListener("submit", (event) => {
     locationContainer.setAttribute('data-error-visible', 'true');
   }
   
-  /** 
+  
   if(firstnameVerification(firstnameTag.value.length) + surnameVerification(surnameTag.value.length) 
   + emailVerification(emailTag.value) + birthdateVerification(birthdateTag.value) 
   + quantityVerification(quantityTag.value) + tcTag.checked ) {
 
   }
-  */
+  
     
 });
+
+*/
