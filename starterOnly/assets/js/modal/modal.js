@@ -1,4 +1,6 @@
-// DOM Elements
+/**
+ * recuperation des elements DOM de la modal
+ */
 
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -20,7 +22,9 @@ export function editNav() {
   }
 }
 
-// DOM Elements
+/**
+ * ensemble des fonctions pour la fermeture et l'ouverture de la modal
+ */
 
 // launch modal form
  export function launchModal() {
@@ -32,6 +36,11 @@ export function editNav() {
   modalbg.style.display = "none";
 }
 
+/**
+ * ensemble des fonction de modification de la modal lors de la validation du formulaire 
+ */
+
+//supression label et input du formulaire
 export function formInputSuppresion(){
   for (let i = 0; i < formLabel.length; i++){
     formLabel[i].style.opacity = "0";
@@ -41,14 +50,17 @@ export function formInputSuppresion(){
 }
 }
 
+//modification du bouton de validation du formulaire 
 export function submitBtnMod(){
  submitBtn.setAttribute("value", "c'est partie");
 }
 
+//suppression du texte 
 export function formTextSuppresion(){
   formText.style.opacity = "0"
 }
 
+//affichage texte de validation 
 export function validationTextDisplay() {
   formValidationMessage.style.display = "block"
 }
