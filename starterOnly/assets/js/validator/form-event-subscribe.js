@@ -26,7 +26,7 @@ export function isValidFirstname(firstnameValue) {
     
   }
   firstNameContainer.setAttribute('data-error-visible', 'true');
-  return false;
+  
 };
 
 //fonction de verification du nom
@@ -39,7 +39,7 @@ export function isValidLastname(lastnameValue) {
   }
 
   lastNameContainer.setAttribute('data-error-visible', 'true');
-  return false;
+  
 }
 
 //fonction de verifiction de l'email
@@ -74,7 +74,7 @@ export function isValidQantity(quantityValue)
 }
 
 //verification de la selection d'un lieux 
-export function isValideLocation()
+export function isValidLocation()
 {
   const locationContainer = locationTag.parentNode;
     for (let i = 0; i < locationInputList.length; i++) {
@@ -84,11 +84,11 @@ export function isValideLocation()
       }
     }
     locationContainer.setAttribute('data-error-visible', 'true');
-    return false;
+    
 }
 
 //fonction de verification des conditions d'utilisation 
-export function isValideCondition()
+export function isValidGCU()
 {
   const conditionContainer = conditionTag.parentNode;
   if (conditionTag.checked) {
@@ -97,10 +97,4 @@ export function isValideCondition()
   } else {
     conditionContainer.setAttribute('data-error-visible', 'true');
   }
-
 }
-
-
-
-
-

@@ -8,12 +8,12 @@ const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 const formLabel = document.querySelectorAll("label")
-const formInput = document.querySelectorAll(".text-control")
+const formInput = document.querySelectorAll(".text-control, .checkbox-input")
 const formText = document.querySelector(".text-label")
 const formValidationMessage = document.querySelector(".validation-text")
 
 
-export function editNav() {
+function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
@@ -27,7 +27,7 @@ export function editNav() {
  */
 
 // launch modal form
- export function launchModal() {
+export function launchModal() {
   modalbg.style.display = "block";
 }
 
@@ -41,33 +41,18 @@ export function editNav() {
  */
 
 //supression label et input du formulaire
-export function formInputSuppresion(){
-  for (let i = 0; i < formLabel.length; i++){
-    formLabel[i].style.opacity = "0";
+export function formElementsErase() {
+  for (let i = 0; i < formInput.length; i++) {
+    formInput[i].parentNode.style.opacity = "0";
   }
-  for (let i = 0; i < formInput.length; i++){
-    formInput[i].style.opacity = "0";
-}
+
+  formText.style.opacity = "0";
 }
 
 //modification du bouton de validation du formulaire 
-export function submitBtnMod(){
+export function validationMessageDisplay() {
  submitBtn.setAttribute("value", "c'est partie");
+ formValidationMessage.style.display = "block";
 }
-
-//suppression du texte 
-export function formTextSuppresion(){
-  formText.style.opacity = "0"
-}
-
-//affichage texte de validation 
-export function validationTextDisplay() {
-  formValidationMessage.style.display = "block"
-}
-
-
-
-
-
 
 

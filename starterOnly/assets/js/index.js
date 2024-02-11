@@ -1,7 +1,9 @@
+import { launchModal, closeModal, formElementsErase, validationMessageDisplay } from './modal/modal.js';
+import { isValidFirstname, isValidLastname, isValidEmail, isValidBirthdate, isValidQantity, isValidGCU, isValidLocation } from './validator/form-event-subscribe.js';
+
 /**
  * recuperation elements DOM du formulaire
  */
-
 const firstnameTag = document.getElementById('first');
 const lastnameTag = document.getElementById('last');
 const emailTag = document.getElementById('email');
@@ -10,26 +12,23 @@ const quantityTag = document.getElementById('quantity');
 const locationInputList = document.getElementsByName('location');
 const conditionTag = document.getElementById('checkbox1');
 const locationTag = document.getElementById('location1');
-const form = document.querySelector('form')
+const form = document.querySelector('form');
 
 /**
  * recuperation elements DOM de la modal
  */
-
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
-const formLabel = document.querySelectorAll("label")
-const formInput = document.querySelectorAll(".text-control")
-const formText = document.querySelector(".text-label")
+const formLabel = document.querySelectorAll("label");
+const formInput = document.querySelectorAll(".text-control");
+const formText = document.querySelector(".text-label");
 
 /**
  * gestion ouverture/ fermeture de la modal 
 */
-
-import { launchModal, closeModal, formInputSuppresion, submitBtnMod, formTextSuppresion, validationTextDisplay } from './modal/modal.js'
 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -38,9 +37,6 @@ closeBtn.addEventListener("click", closeModal);
 /** 
  * gestion  champs formulaire
 */
-
-//import des fonctions de validation du formulaire
-import {isValidFirstname, isValidLastname, isValidEmail, isValidBirthdate, isValidQantity, isValideCondition, isValideLocation } from './validator/form-event-subscribe.js'
 
 //appel de la fonction de validation du prenom
 firstnameTag.addEventListener('focusout', (event) => {
@@ -70,13 +66,14 @@ quantityTag.addEventListener("focusout", (event) => {
 //appel de la fonction de verification de la selection d'un lieux 
 for (let i = 0; i < locationInputList.length; i++) {
   locationInputList[i].addEventListener("change", (event) => {
-    isValideLocation()
+    isValidLocation()
   }
 )};
 
 //appel de la fonction de verification de l'acceptation des conditions d'utilisation
 conditionTag.addEventListener("change", (event) => {
-  isValideCondition()
+  // On pourrait renommer en isValidGeneralTermsOfUse()
+  isValidGCU()
 });
 
 /**
@@ -86,26 +83,24 @@ conditionTag.addEventListener("change", (event) => {
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
   event.preventDefault();
+
   //on vérifie a nouveau chaque champ du formulaire 
-  isValidFirstname(firstnameTag.value.length);
-  isValidLastname(lastnameTag.value.length);
-  isValidEmail(emailTag.value);
-  isValidBirthdate(birthdateTag.value);
-  isValidQantity(quantityTag.value);
-  isValideCondition();
-  isValideLocation();
+  var validFirstname = isValidFirstname(firstnameTag.value.length);
+  var validLastname = isValidLastname(lastnameTag.value.length);
+  var validEmail = isValidEmail(emailTag.value);
+  var validBirthdate = isValidBirthdate(birthdateTag.value);
+  var validQuantity = isValidQantity(quantityTag.value);
+  var validLocation = isValidLocation();
+  var validGCU = isValidGCU();
 
   //affichage du message de validation si tous les valeurs entrée sont correctes
-  if(isValidFirstname(firstnameTag.value.length) + isValidLastname(lastnameTag.value.length) 
-  + isValidEmail(emailTag.value) + isValidBirthdate(birthdateTag.value) 
-  + isValidQantity(quantityTag.value) + isValideLocation() + conditionTag.checked ) {
+  if(validFirstname + validLastname + validEmail + validBirthdate + validQuantity + validLocation + validGCU) {
     
-    formInputSuppresion();
-    submitBtnMod();
-    formTextSuppresion();
-    validationTextDisplay();
-
+    formElementsErase();
+    validationMessageDisplay();
+    
     submitBtn.addEventListener("click", closeModal)
+    
 
 }    
 })
