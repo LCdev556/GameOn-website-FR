@@ -10,14 +10,18 @@ const quantityTag = document.getElementById('quantity');
 const locationInputList = document.getElementsByName('location');
 const conditionTag = document.getElementById('checkbox1');
 const locationTag = document.getElementById('location1');
-const form = document.querySelector('form')
 
 
 /**
  * Verification champs d'entrée du formulaire
  */
 
-//fonction verification du prenom
+
+/**
+ * 
+ * @param {string} firstnameValue Valeur du prenom entrée dans le formulaire
+ * @returns 
+ */
 export function isValidFirstname(firstnameValue) {
   const firstNameContainer = firstnameTag.parentNode;
   if (firstnameValue >= 2) {
@@ -29,7 +33,12 @@ export function isValidFirstname(firstnameValue) {
   
 };
 
-//fonction de verification du nom
+
+/**
+ * 
+ * @param {string} lastnameValue Valeur du nom de famille entrée dans le formulaire
+ * @returns 
+ */
 export function isValidLastname(lastnameValue) {
   const lastNameContainer = lastnameTag.parentNode;
 
@@ -42,7 +51,11 @@ export function isValidLastname(lastnameValue) {
   
 }
 
-//fonction de verifiction de l'email
+/**
+ * 
+ * @param {string} emailValue Valeur de l'email entrée dans le formulaire
+ * @returns 
+ */
 export function isValidEmail(emailValue) {
   const emailContainer = emailTag.parentNode;
   if ((new RegExp("[a-z._-]+@[a-z._-]+\\.[a-z._-]+")).test(emailValue)) {
@@ -52,7 +65,11 @@ export function isValidEmail(emailValue) {
   emailContainer.setAttribute('data-error-visible', 'true');
 }
 
-//fonction de verification de la date de naissance 
+/**
+ * 
+ * @param {string} birthdateValue Valeur de la date de naissance entrée dans le formulaire 
+ * @returns 
+ */ 
 export function isValidBirthdate(birthdateValue) {
   const birthdateContainer = birthdateTag.parentNode;
   if ((new RegExp("\\d{4}\-\\d{2}\-\\d{2}")).test(birthdateValue)){
@@ -62,7 +79,11 @@ export function isValidBirthdate(birthdateValue) {
   birthdateContainer.setAttribute('data-error-visible', 'true');
 }
 
-//fonction de verification de la quantitée de tournois auxquels l'utilisateur a participé
+/**
+ * 
+ * @param {number} quantityValue nombre de tournois auquels l'utilisateur a participé 
+ * @returns 
+ */
 export function isValidQantity(quantityValue) 
 {
   const quantityContainer = quantityTag.parentNode;
@@ -73,7 +94,10 @@ export function isValidQantity(quantityValue)
     quantityContainer.setAttribute('data-error-visible', 'true');
 }
 
-//verification de la selection d'un lieux 
+/**
+ * verification de la selection d'un lieux 
+ * @returns 
+ */
 export function isValidLocation()
 {
   const locationContainer = locationTag.parentNode;
@@ -87,7 +111,10 @@ export function isValidLocation()
     
 }
 
-//fonction de verification des conditions d'utilisation 
+/**
+ * fonction de verification des conditions d'utilisation
+ * @returns 
+ */ 
 export function isValidGCU()
 {
   const conditionContainer = conditionTag.parentNode;

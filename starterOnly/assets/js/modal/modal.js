@@ -3,17 +3,13 @@
  */
 
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
-const formLabel = document.querySelectorAll("label")
 const formInput = document.querySelectorAll(".text-control, .checkbox-input")
 const formText = document.querySelector(".text-label")
 const formValidationMessage = document.querySelector(".validation-text")
 
 
-function editNav() {
+ export function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
@@ -39,6 +35,7 @@ export function launchModal() {
 /**
  * ensemble des fonction de modification de la modal lors de la validation du formulaire 
  */
+
 
 //supression label et input du formulaire
 export function formElementsErase() {

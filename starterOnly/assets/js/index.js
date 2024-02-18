@@ -11,20 +11,15 @@ const birthdateTag = document.getElementById('birthdate');
 const quantityTag = document.getElementById('quantity');
 const locationInputList = document.getElementsByName('location');
 const conditionTag = document.getElementById('checkbox1');
-const locationTag = document.getElementById('location1');
 const form = document.querySelector('form');
 
 /**
  * recuperation elements DOM de la modal
  */
-const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
-const formLabel = document.querySelectorAll("label");
-const formInput = document.querySelectorAll(".text-control");
-const formText = document.querySelector(".text-label");
+
 
 /**
  * gestion ouverture/ fermeture de la modal 
