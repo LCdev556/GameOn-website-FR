@@ -8,7 +8,6 @@ const formInput = document.querySelectorAll(".text-control, .checkbox-input")
 const formText = document.querySelector(".text-label")
 const formValidationMessage = document.querySelector(".validation-text")
 
-
  export function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
