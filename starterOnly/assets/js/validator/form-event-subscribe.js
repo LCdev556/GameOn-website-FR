@@ -20,12 +20,13 @@ const locationTag = document.getElementById('location1');
 /**
  * 
  * @param {string} firstnameValue Valeur du prenom entrée dans le formulaire
- * @returns 
+ * @returns {boolean}
  */
 export function isValidFirstname(firstnameValue) {
   const firstNameContainer = firstnameTag.parentNode;
   if (firstnameValue >= 2) {
     firstNameContainer.setAttribute('data-error-visible', 'false');
+    
     return true;
     
   }
@@ -37,7 +38,7 @@ export function isValidFirstname(firstnameValue) {
 /**
  * 
  * @param {string} lastnameValue Valeur du nom de famille entrée dans le formulaire
- * @returns 
+ * @returns {boolean}
  */
 export function isValidLastname(lastnameValue) {
   const lastNameContainer = lastnameTag.parentNode;
@@ -54,7 +55,7 @@ export function isValidLastname(lastnameValue) {
 /**
  * 
  * @param {string} emailValue Valeur de l'email entrée dans le formulaire
- * @returns 
+ * @returns {boolean}
  */
 export function isValidEmail(emailValue) {
   const emailContainer = emailTag.parentNode;
@@ -68,7 +69,7 @@ export function isValidEmail(emailValue) {
 /**
  * 
  * @param {string} birthdateValue Valeur de la date de naissance entrée dans le formulaire 
- * @returns 
+ * @returns {boolean}
  */ 
 export function isValidBirthdate(birthdateValue) {
   const birthdateContainer = birthdateTag.parentNode;
@@ -82,7 +83,7 @@ export function isValidBirthdate(birthdateValue) {
 /**
  * 
  * @param {number} quantityValue nombre de tournois auquels l'utilisateur a participé 
- * @returns 
+ * @returns {boolean}
  */
 export function isValidQantity(quantityValue) 
 {
@@ -96,7 +97,7 @@ export function isValidQantity(quantityValue)
 
 /**
  * verification de la selection d'un lieux 
- * @returns 
+ * @returns {boolean}
  */
 export function isValidLocation()
 {
@@ -113,15 +114,25 @@ export function isValidLocation()
 
 /**
  * fonction de verification des conditions d'utilisation
- * @returns 
+ * @returns {boolean}
  */ 
 export function isValidGCU()
 {
   const conditionContainer = conditionTag.parentNode;
+
   if (conditionTag.checked) {
     conditionContainer.setAttribute('data-error-visible', 'false');
+
     return true;
-  } else {
-    conditionContainer.setAttribute('data-error-visible', 'true');
   }
+  conditionContainer.setAttribute('data-error-visible', 'true');
+  
 }
+
+/**
+ * @returns {boolean}
+ */
+export function isAllFieldsValid()
+{
+  return isValidFirstname(firstnameTag.value.length) + isValidLastname(lastnameTag.value.length) + isValidEmail(emailTag.value) + isValidBirthdate(birthdateTag.value) + isValidQantity(quantityTag.value) + isValidLocation() + isValidGCU();
+} 

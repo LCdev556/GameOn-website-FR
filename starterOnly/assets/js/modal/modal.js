@@ -48,7 +48,7 @@ export function formElementsErase() {
 
 //modification du bouton de validation du formulaire 
 export function validationMessageDisplay() {
- submitBtn.setAttribute("value", "c'est partie");
+ submitBtn.setAttribute("value", "C'est parti !");
  formValidationMessage.style.display = "block";
 }
 

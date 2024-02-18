@@ -1,5 +1,5 @@
 import { launchModal, closeModal, formElementsErase, validationMessageDisplay } from './modal/modal.js';
-import { isValidFirstname, isValidLastname, isValidEmail, isValidBirthdate, isValidQantity, isValidGCU, isValidLocation } from './validator/form-event-subscribe.js';
+import { isValidFirstname, isValidLastname, isValidEmail, isValidBirthdate, isValidQantity, isValidGCU, isValidLocation, isAllFieldsValid } from './validator/form-event-subscribe.js';
 
 /**
  * recuperation elements DOM du formulaire
@@ -74,28 +74,15 @@ conditionTag.addEventListener("change", (event) => {
 /**
  * validation du formulaire 
  */
-
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
   event.preventDefault();
 
-  //on vérifie a nouveau chaque champ du formulaire 
-  var validFirstname = isValidFirstname(firstnameTag.value.length);
-  var validLastname = isValidLastname(lastnameTag.value.length);
-  var validEmail = isValidEmail(emailTag.value);
-  var validBirthdate = isValidBirthdate(birthdateTag.value);
-  var validQuantity = isValidQantity(quantityTag.value);
-  var validLocation = isValidLocation();
-  var validGCU = isValidGCU();
-
   //affichage du message de validation si tous les valeurs entrée sont correctes
-  if(validFirstname + validLastname + validEmail + validBirthdate + validQuantity + validLocation + validGCU) {
-    
+  if(isAllFieldsValid()) {
     formElementsErase();
     validationMessageDisplay();
     
     submitBtn.addEventListener("click", closeModal)
-    
-
-}    
-})
+  }    
+});
