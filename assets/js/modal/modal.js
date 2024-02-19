@@ -4,9 +4,9 @@
 
 const modalbg = document.querySelector(".bground");
 const submitBtn = document.querySelector(".btn-submit");
-const formInput = document.querySelectorAll(".text-control, .checkbox-input")
-const formText = document.querySelector(".text-label")
-const formValidationMessage = document.querySelector(".validation-text")
+const formInput = document.querySelectorAll(".text-control, .checkbox-input");
+const formText = document.querySelector(".text-label");
+const formValidationMessage = document.querySelector(".validation-text");
 
  export function editNav() {
   var x = document.getElementById("myTopnav");
@@ -47,7 +47,7 @@ export function formElementsErase() {
 
 //modification du bouton de validation du formulaire 
 export function validationMessageDisplay() {
- submitBtn.setAttribute("value", "C'est parti !");
+ submitBtn.setAttribute("value", "Fermer");
  formValidationMessage.style.display = "block";
 }
 

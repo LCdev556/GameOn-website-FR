@@ -45,30 +45,30 @@ lastnameTag.addEventListener('focusout', (event) => {
 
 //appel de la fonction de validation de l'email
 emailTag.addEventListener("focusout", (event) => {
-  isValidEmail(emailTag.value)
+  isValidEmail(emailTag.value);
 });
 
 //appel de la fonction de validation de la date de naissance 
 birthdateTag.addEventListener("focusout", (event) => {
-  isValidBirthdate(birthdateTag.value)
+  isValidBirthdate(birthdateTag.value);
 });
 
 //appel de la fonction de validation de la quantitée de tournois auxquels l'utilisateur a participé
 quantityTag.addEventListener("focusout", (event) => {
-  isValidQantity(quantityTag.value)
+  isValidQantity(quantityTag.value);
 });
 
 //appel de la fonction de verification de la selection d'un lieux 
 for (let i = 0; i < locationInputList.length; i++) {
   locationInputList[i].addEventListener("change", (event) => {
-    isValidLocation()
+    isValidLocation();
   }
 )};
 
 //appel de la fonction de verification de l'acceptation des conditions d'utilisation
 conditionTag.addEventListener("change", (event) => {
   // On pourrait renommer en isValidGeneralTermsOfUse()
-  isValidGCU()
+  isValidGCU();
 });
 
 /**
@@ -83,6 +83,6 @@ form.addEventListener("submit", (event) => {
     formElementsErase();
     validationMessageDisplay();
     
-    submitBtn.addEventListener("click", closeModal)
+    submitBtn.addEventListener("click", closeModal);
   }    
 });

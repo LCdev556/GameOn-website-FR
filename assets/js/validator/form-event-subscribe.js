@@ -16,9 +16,8 @@ const locationTag = document.getElementById('location1');
  * Verification champs d'entrée du formulaire
  */
 
-
 /**
- * 
+ * Fonction de verification du prenom
  * @param {string} firstnameValue Valeur du prenom entrée dans le formulaire
  * @returns {boolean}
  */
@@ -36,7 +35,7 @@ export function isValidFirstname(firstnameValue) {
 
 
 /**
- * 
+ * Fonction de verification du nom de famille
  * @param {string} lastnameValue Valeur du nom de famille entrée dans le formulaire
  * @returns {boolean}
  */
@@ -47,13 +46,11 @@ export function isValidLastname(lastnameValue) {
     lastNameContainer.setAttribute('data-error-visible', 'false');
     return true;
   }
-
   lastNameContainer.setAttribute('data-error-visible', 'true');
-  
 }
 
 /**
- * 
+ * Fonction de verification de l'email
  * @param {string} emailValue Valeur de l'email entrée dans le formulaire
  * @returns {boolean}
  */
@@ -67,7 +64,7 @@ export function isValidEmail(emailValue) {
 }
 
 /**
- * 
+ * Fonction de verification de la date de naissance 
  * @param {string} birthdateValue Valeur de la date de naissance entrée dans le formulaire 
  * @returns {boolean}
  */ 
@@ -81,7 +78,7 @@ export function isValidBirthdate(birthdateValue) {
 }
 
 /**
- * 
+ * Fonction de verification de la quantité de tournois auquels le joueur a participé
  * @param {number} quantityValue nombre de tournois auquels l'utilisateur a participé 
  * @returns {boolean}
  */
@@ -96,7 +93,7 @@ export function isValidQantity(quantityValue)
 }
 
 /**
- * verification de la selection d'un lieux 
+ * Fonction de verification de la selection d'un lieux 
  * @returns {boolean}
  */
 export function isValidLocation()
@@ -109,11 +106,10 @@ export function isValidLocation()
       }
     }
     locationContainer.setAttribute('data-error-visible', 'true');
-    
 }
 
 /**
- * fonction de verification des conditions d'utilisation
+ * Fonction de verification de la selection des conditions d'utilisation
  * @returns {boolean}
  */ 
 export function isValidGCU()
@@ -126,10 +122,10 @@ export function isValidGCU()
     return true;
   }
   conditionContainer.setAttribute('data-error-visible', 'true');
-  
 }
 
 /**
+ * Fonction de verification de l'ensemble des champs pour la validation du formulaire
  * @returns {boolean}
  */
 export function isAllFieldsValid()
